@@ -1,0 +1,98 @@
+// 清除默认样式
+* {
+  margin: 0;
+  padding: 0;
+  // 改变盒子模型的计算方式：防止盒子大小被边距改变
+  box-sizing: border-box;
+}
+
+body {
+  // 设置字体
+  font: bold 20px "Courier";
+}
+
+// 用变量存储背景色
+@bg-color: rgb(183, 212, 169);
+// 设置主窗口样式
+#main {
+  // 游戏界面在浏览器中的位置，上方留50px，左右对称
+  margin: 100px auto;
+  background-color: @bg-color;
+
+  // 长宽
+  width: 360px;
+  height: 420px;
+
+  // 边框
+  border: solid 10px black;
+  border-radius: 30px;
+
+  /* 开启弹性模式 重要！*/
+  display: flex;
+  flex-direction: column; // 改主轴为纵轴
+  justify-content: space-around; // 平均分布主轴y上的两个div元素
+  align-items: center; // 侧轴方向平分
+
+  // 子元素：设置蛇爬行区域样式
+  #scroll {
+    width: 304px;
+    height: 304px;
+
+    border: 2px black solid;
+
+    // 开启相对定位，子绝父相
+    position: relative;
+
+    // 设置蛇的样式
+    #snake {
+      // 蛇身,每个小方格。这里的&是一个特殊的符号，它用于引用父选择器
+      & > div {
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+
+        /* 在不改变蛇的大小的情况下，只改变视觉效果，使得各个小方块看起来有分割 
+           不能用padding或margin因为margin会改变大小，而padding颜色和bgc一样
+        */
+        border: solid 1px @bg-color; // 添加一个与背景色相同的外轮廓
+
+        // 开启绝对定位，因为蛇的位置会改变
+        position: absolute;
+      }
+    }
+
+    #food {
+      width: 10px;
+      height: 10px;
+      //   background-color: red; // 纯粹为了调试用的
+
+      position: absolute;
+      // 先给一个随机初始位置
+      left: 40px;
+      top: 100px;
+
+      display: flex;
+      // 允许换行
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-items: space-between;
+
+      // 设置四个小方块
+      & > div {
+        width: 4px;
+        height: 4px;
+        background-color: #3d3c3c;
+        // 旋转45°
+        transform: rotate(45deg);
+      }
+    }
+  }
+  #scorePanel {
+    // 设置一个虚拟的宽度（没有边框）
+    width: 300px;
+    /* 为scorediv开启弹性 */
+    display: flex;
+    // 默认就是x轴，我们平均分布两个span即可
+    justify-content: space-between;
+  }
+}
