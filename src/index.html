@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>贪食蛇</title>
+  </head>
+  <body>
+    <!-- 游戏主页面 -->
+    <div id="main">
+      <!-- 游戏标题 -->
+      <h1 id="gameTitle">蛇ゲーム</h1>
+      <!-- 蛇爬行区域 -->
+      <div id="scroll">
+        <!-- 蛇对象容器 -->
+        <div id="snake">
+          <!-- 内部表示蛇的各个部分：头，身子 -->
+          <div></div>
+        </div>
+
+        <!-- 设置食物 -->
+        <div id="food">
+          <!-- 四个小div纯粹是为了美观设置的 -->
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <!-- 计分板 -->
+      <div id="scorePanel">
+        <div>SCORE:<span id="score">0</span></div>
+        <div>LEVEL:<span id="level">1</span></div>
+      </div>
+    </div>
+  </body>
+</html>
+<style>
+  #gameTitle {
+    text-align: center;
+    font-size: 1em; /* 较大的字体大小 */
+    color: #d0e2d0; /* 绿色调，与贪食蛇主题相符 */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 文本阴影，增加深度感 */
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background-image: linear-gradient(
+      to right,
+      #76b852,
+      #8dc26f
+    ); /* 水平渐变背景 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 盒子阴影，增加立体感 */
+  }
+</style>
